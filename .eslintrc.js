@@ -8,7 +8,6 @@ module.exports = {
     parser: 'babel-eslint',
   },
   rules: {
-    quotes: ['error', 'single'], // enforce using single quotes
-    indent: ['error', 2], // enforce 2 spaces for indentation
+    quotes: ['error', 'single'], // enforce using single quotesnpspaces for indentation
   },
 };
