@@ -1,0 +1,26 @@
+// Import Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// Custom styles for HomePage
+.home-page {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+
+  .user-actions {
+    display: flex;
+    align-items: center;
+
+    .add-user-button {
+      margin-right: 10px;
+    }
+  }
+}

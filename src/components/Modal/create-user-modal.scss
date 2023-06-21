@@ -1,0 +1,46 @@
+// ModalStyles.scss
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1050;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-dialog {
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+}
+
+.modal-dialog.modal-dialog-right {
+  margin-left: auto;
+}
+
+.modal-content {
+  height: 100vh;
+  background-color: #fff;
+  border-radius: 0;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+}
+
+.modal-header {
+  /* Customize as needed */
+}
+
+.modal-body {
+  /* Customize as needed */
+  flex-grow: 1;
+}
+
+.modal-footer {
+  /* Customize as needed */
+}

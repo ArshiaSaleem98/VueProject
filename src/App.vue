@@ -1,13 +1,10 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  >
   <home-page msg="Welcome to Your Vue.js App" />
 </template>
 
 <script>
-import HomePage from './views/HomePage.vue';
+import HomePage from './views/HomePage/HomePage.vue';
+import 'bootstrap/dist/css/bootstrap.css'; // Import Bootstrap CSS
 
 export default {
   name: 'App',
