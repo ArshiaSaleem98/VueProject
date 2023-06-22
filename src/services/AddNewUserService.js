@@ -1,20 +1,18 @@
+import BASE_URL from '@/config';
 import axios from 'axios';
+BASE_URL;
 
 export default {
   addUser(user) {
-    console.log('cons', user);
-    const port = window.location.port;
-    const apiUrl = `http://localhost:${port}/webdev/api/users`;
-
     return axios
-      .post(apiUrl, {
-        id: Number(user.id), // Convert the value to a string if needed        ,
+      .post(BASE_URL, {
+        id: Number(user.id),
         name: user.name,
         cc: user.cc,
         modifiedBy: user.modifiedBy,
         updatedTs: user.updatedTs,
       })
-      .then((response) => console.log('res', user, response))
+      .then((response) => console.log('response', user, response))
       .catch((error) => {
         console.error('Error adding user:', error);
         throw error;
