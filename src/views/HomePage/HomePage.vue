@@ -1,21 +1,16 @@
 <template>
-  <div class="home-page">
-    <div class="header">
-      <h1>Users</h1>
-      <div class="user-actions">
-        <button
-          class="btn btn-primary add-user-button"
-          @click="addNewUser"
-        >
-          Add User
-        </button>
-        <SearchBar />
-      </div>
+  <div class="home-page-wrapper">
+    <div class="home-page-header">
+      <h1>All Users</h1>
     </div>
-    <UserTable
-      ref="userTable"
-      :users="users"
-    />
+    <div class="add-new-user-section">
+      <button class="btn btn-primary add-new-user-button" @click="addNewUser">
+        Add User
+      </button>
+    </div>
+    <div class="all-user-table-container">
+      <UserTable ref="userTable" :users="users" />
+    </div>
   </div>
 </template>
 

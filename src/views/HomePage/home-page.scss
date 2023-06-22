@@ -1,26 +1,42 @@
-// Import Bootstrap
-@import 'bootstrap/scss/bootstrap';
+.home-page-wrapper {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
-// Custom styles for HomePage
-.home-page {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.home-page-header {
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+  z-index: 1;
+}
 
-    h1 {
-      font-size: 24px;
-      margin: 0;
-    }
-  }
+.home-page-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
 
-  .user-actions {
-    display: flex;
-    align-items: center;
+.add-new-user-section {
+  padding-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
-    .add-user-button {
-      margin-right: 10px;
-    }
-  }
+.all-user-table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-new-user-button {
+  justify-content: flex-start;
+  margin-left: 10px;
 }
