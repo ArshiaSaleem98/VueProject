@@ -1,6 +1,6 @@
 <template>
-  <div class="user-table">
-    <div class="table-responsive">
+  <div class="all-user-table">
+    <div class="all-user-table__responsive">
       <table class="table">
         <!-- Table header -->
         <thead>
@@ -21,17 +21,39 @@
             :key="user.id"
           >
             <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.cc }}</td>
+            <td>
+              <input
+                v-if="isUserEditing && selectedUser.id === user.id"
+                v-model="selectedUser.name"
+                type="text"
+              >
+              <span v-else>{{ user.name }}</span>
+            </td>
+            <td>
+              <input
+                v-if="isUserEditing && selectedUser.id === user.id"
+                v-model="selectedUser.cc"
+                type="text"
+              >
+              <span v-else>{{ user.cc }}</span>
+            </td>
             <td>{{ user['modified-by'] }}</td>
             <td>{{ user['updated-ts'] }}</td>
             <td>
               <div class="action-buttons">
                 <button
+                  v-if="!isUserEditing"
                   class="btn btn-primary"
                   @click="editUser(user.id)"
                 >
                   Edit
+                </button>
+                <button
+                  v-else
+                  class="btn btn-success"
+                  @click="saveUserChanges"
+                >
+                  Save
                 </button>
                 <button
                   class="btn btn-danger"
@@ -52,15 +74,21 @@
       v-if="showAddRow"
       title="Add User"
       @close="closeModal"
-      @userAdded="fetchUsers"
+      @user-added="fetchUsers"
     />
   </div>
 </template>
 
 <script>
-import AddNewUserService from '@/services/AddNewUserService';
 import GetAllUserService from '@/services/GetAllUserService';
 import UserModal from '@/components/Modal/CreateUserModal.vue';
+import {
+  editUser,
+  saveUserChanges,
+  deleteUser,
+  addUser,
+  closeModal,
+} from '@/utils/userMethods';
 
 export default {
   components: {
@@ -77,7 +105,15 @@ export default {
         'modified-by': '',
         'updated-ts': '',
       },
+      selectedUser: null,
+      isUserEditing: false,
     };
+  },
+  watch: {
+    $route() {
+      // When the route changes, fetch the updated user list
+      this.fetchUsers();
+    },
   },
   mounted() {
     this.fetchUsers();
@@ -93,40 +129,12 @@ export default {
           console.error('Error fetching users:', error);
         });
     },
-    editUser(userId) {
-      console.log('Edit User:', userId);
-    },
-    deleteUser(userId) {
-      console.log('Delete User:', userId);
-    },
-    addUser() {
-      // Add the new user to the users array
-      this.users.push(this.newUser);
 
-      // Close the modal
-      this.closeModal();
-
-      // Reset the newUser object
-      this.newUser = {
-        id: '',
-        name: '',
-        cc: '',
-        modifiedBy: '',
-        updatedTs: '',
-      };
-
-      // Call the service to add the user
-      AddNewUserService.addUser(this.newUser)
-        .then((response) => {
-          console.log('User added successfully:', response);
-        })
-        .catch((error) => {
-          console.error('Error adding user:', error);
-        });
-    },
-    closeModal() {
-      this.showAddRow = false;
-    },
+    editUser,
+    saveUserChanges,
+    deleteUser,
+    addUser,
+    closeModal,
   },
 };
 </script>

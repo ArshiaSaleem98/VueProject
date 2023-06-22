@@ -1,6 +1,6 @@
 // ModalStyles.scss
 
-.modal-wrapper {
+.new-user-modal__wrapper {
   position: fixed;
   top: 0;
   right: 0;
@@ -14,17 +14,17 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-dialog {
+.new-user-modal__dialog {
   width: 100%;
   max-width: 500px;
   margin: 0;
 }
 
-.modal-dialog.modal-dialog-right {
+.new-user-modal__dialog.new-user-modal__dialog-right {
   margin-left: auto;
 }
 
-.modal-content {
+.new-user-modal__content {
   height: 100vh;
   background-color: #fff;
   border-radius: 0;
@@ -32,15 +32,7 @@
   flex-direction: column;
 }
 
-.modal-header {
-  /* Customize as needed */
-}
-
 .modal-body {
   /* Customize as needed */
   flex-grow: 1;
-}
-
-.modal-footer {
-  /* Customize as needed */
 }

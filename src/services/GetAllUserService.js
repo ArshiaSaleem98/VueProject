@@ -1,9 +1,10 @@
+import BASE_API_URL from '@/config';
 import axios from 'axios';
 
 export default {
   getUsers() {
-    const port = window.location.port;
-    const apiUrl = `http://localhost:${port}/webdev/api/users`;
+    const timestamp = new Date().getTime();
+    const apiUrl = `${BASE_API_URL}?timestamp=${timestamp}`;
 
     return axios
       .get(apiUrl)

@@ -1,11 +1,10 @@
-import BASE_URL from '@/config';
+import BASE_API_URL from '@/config';
 import axios from 'axios';
-BASE_URL;
 
 export default {
   addUser(user) {
     return axios
-      .post(BASE_URL, {
+      .post(BASE_API_URL, {
         id: Number(user.id),
         name: user.name,
         cc: user.cc,

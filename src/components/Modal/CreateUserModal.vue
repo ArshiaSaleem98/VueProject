@@ -1,13 +1,13 @@
 <template>
-  <div class="modal-wrapper">
+  <div class="new-user-modal__wrapper">
     <div
       class="modal fade show"
       tabindex="-1"
       role="dialog"
       style="display: block"
     >
-      <div class="modal-dialog modal-dialog-right">
-        <div class="modal-content">
+      <div class="new-user-modal__dialog new-user-modal__dialog-right">
+        <div class="new-user-modal__content">
           <div class="modal-header">
             <h5 class="modal-title">
               {{ title }}
@@ -106,6 +106,7 @@ export default {
       required: true,
     },
   },
+  emits: ['user-added', 'close'],
   data() {
     return {
       newUser: {
@@ -128,11 +129,8 @@ export default {
           return;
         }
         await AddNewUserService.addUser(this.newUser);
-        this.$emit('userAdded'); // Emit the event after adding the user
-
-        // Clear the form fields or perform any other actions needed after adding the user
+        this.$emit('user-added');
       } catch (error) {
-        // Handle the error
         console.error('Error adding user:', error);
       }
     },

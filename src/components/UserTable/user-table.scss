@@ -1,71 +1,72 @@
-.user-table {
+.all-user-table {
   margin: 0 40px;
   display: flex;
   justify-content: center;
 }
 
-.user-table .table {
+.all-user-table .table {
   width: 100%;
   max-width: 100%;
 }
 
-.user-table .table tbody {
+.all-user-table .table tbody {
   display: block;
   overflow: auto;
   max-height: 400px;
 }
 
-.user-table .table thead,
-.user-table .table tbody {
+.all-user-table .table thead,
+.all-user-table .table tbody {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
 
-.user-table .table th,
-.user-table .table td {
+.all-user-table .table th,
+.all-user-table .table td {
   padding: 15px;
   text-align: left;
 }
 
-.user-table .table tr {
+.all-user-table .table tr {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   border: 1px solid #ddd;
+  margin-bottom: 20px; /* Add gap between rows */
 }
 
-.user-table .table .action-buttons {
+.all-user-table .table .action-buttons {
   display: flex;
   gap: 10px;
 }
 
-.user-table .table .action-buttons button {
+.all-user-table .table .action-buttons button {
   flex: 1;
   padding: 10px;
 }
 
 @media (max-width: 767px) {
   /* Apply responsive styles for smaller screens */
-  .user-table .table thead {
+  .all-user-table .table thead {
     display: none;
   }
 
-  .user-table .table tbody tr {
+  .all-user-table .table tbody tr {
     display: block;
     margin-bottom: 20px;
     padding: 15px;
     position: relative;
   }
 
-  .user-table .table td {
+  .all-user-table .table td {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
-  .user-table .table .mobile-card {
+  .all-user-table .table .mobile-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -74,12 +75,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  .user-table .table .mobile-field-label {
+  .all-user-table .table .mobile-field-label {
     font-weight: bold;
     margin-bottom: 5px;
   }
 
-  .user-table .table .mobile-field-value {
+  .all-user-table .table .mobile-field-value {
     margin-bottom: 5px;
   }
 }

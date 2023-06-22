@@ -1,4 +1,4 @@
-import BASE_URL from '@/config';
+import BASE_API_URL from '@/config';
 import axios from 'axios';
 
 const EditUserService = {
@@ -7,7 +7,7 @@ const EditUserService = {
 
     try {
       return await axios.put(
-        BASE_URL + '/' + id + `?timestamp=${timestamp}`,
+        BASE_API_URL + '/' + id + `?timestamp=${timestamp}`,
         user
       );
     } catch (error) {

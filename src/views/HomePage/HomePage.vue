@@ -4,12 +4,18 @@
       <h1>All Users</h1>
     </div>
     <div class="add-new-user-section">
-      <button class="btn btn-primary add-new-user-button" @click="addNewUser">
+      <button
+        class="btn btn-primary add-new-user-button"
+        @click="addNewUser"
+      >
         Add User
       </button>
     </div>
     <div class="all-user-table-container">
-      <UserTable ref="userTable" :users="users" />
+      <UserTable
+        ref="userTable"
+        :users="users"
+      />
     </div>
   </div>
 </template>

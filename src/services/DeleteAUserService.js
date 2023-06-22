@@ -1,13 +1,11 @@
 // DeleteUserService.js
+import BASE_API_URL from '@/config';
 import axios from 'axios';
 
 export default {
   deleteUser(userId) {
-    const port = window.location.port;
-    const apiUrl = `http://localhost:${port}/webdev/api/users/${userId}`;
-
     return axios
-      .delete(apiUrl)
+      .delete(BASE_API_URL + '/' + userId)
       .then((response) => {
         console.log('User deleted successfully:', response);
       })
