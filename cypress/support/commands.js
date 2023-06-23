@@ -1,25 +1,52 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import HomePage from '../../src/views/HomePage/HomePage';
+import './commands';
+
+Cypress.Commands.add('setupFixture', () => {
+  cy.fixture('mock-user-data.json').as('usersData');
+  cy.viewport(2000, 2000);
+  Cypress.env('USE_FIXTURE', true);
+
+  cy.intercept('GET', 'http://localhost:8080/webdev/api/users', {
+    fixture: 'mock-user-data.json',
+  }).as('getUsers');
+});
+
+Cypress.Commands.add('showTable', () => {
+  cy.fixture('mock-user-data.json').as('usersData');
+
+  cy.mount(HomePage);
+
+  // Access the fixture data using the alias
+  cy.get('@usersData').then((users) => {
+    cy.get('.all-user-table')
+      .find('.all-user-table__responsive')
+      .should('exist');
+
+    cy.get('.all-user-table')
+      .find('tbody > tr')
+      .should('have.length', users.length);
+  });
+});
+
+Cypress.Commands.add('createUser', () => {
+  cy.fixture('mock-user-data.json').then((users) => {
+    const newUser = {
+      id: 57,
+      name: 'Mark',
+      cc: 'SP',
+      'modified-by': '',
+      'updated-ts': '',
+    };
+
+    cy.mount(HomePage);
+
+    cy.get('.btn.btn-primary.add-new-user-button')
+      .first()
+      .click({ force: true });
+    cy.get('#name').type(newUser.name);
+    cy.get('#cc').select(newUser.cc);
+    cy.get('.btn.btn-primary[type="submit"]').click();
+    users.push(newUser);
+    cy.writeFile('cypress/fixtures/mock-user-data.json', users);
+  });
+});

@@ -1,6 +1,6 @@
 import EditUserService from '@/services/EditUserService';
 import DeleteUserService from '@/services/DeleteAUserService';
-import AddNewUserService from '@/services/AddNewUserService';
+import axios from 'axios';
 
 export function editUser(userId) {
   console.log('Edit User:', userId);
@@ -54,25 +54,24 @@ export function deleteUser(userId) {
 }
 
 export function addUser() {
-  this.users.push(this.newUser);
-
-  this.closeModal();
-
-  this.newUser = {
-    id: '',
-    name: '',
-    cc: '',
-    'modified-by': '',
-    'updated-ts': '',
-  };
-
-  AddNewUserService.addUser(this.newUser)
-    .then((response) => {
-      console.log('User added successfully:', response);
-    })
-    .catch((error) => {
-      console.error('Error adding user:', error);
+  if (typeof Cypress !== 'undefined' && Cypress.env('USE_FIXTURE')) {
+    // Use fixture data for Cypress tests
+    cy.fixture('mock-user-data').then((users) => {
+      users.push(this.newUser);
     });
+  } else {
+    // Send POST request to the real API
+    // Update the following code with your actual API endpoint and request configuration
+    axios
+      .post('/api/users', this.newUser)
+      .then((response) => {
+        // Handle the response as needed
+        console.log('User added:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error adding user:', error);
+      });
+  }
 }
 
 export function closeModal() {
