@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node proxy.js && vue-cli-service serve",
+    "start": "npx cypress open",
     "serve": "vue-cli-service lint --fix && vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@cypress/webpack-dev-server": "^3.4.1",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "bootstrap-vue": "^2.23.1",
@@ -22,13 +23,19 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@cypress/vue": "^5.0.5",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "babel-eslint": "^10.1.0",
+    "chai": "^4.3.7",
+    "cypress": "^12.15.0",
     "eslint": "^7.32.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^8.0.3",
+    "mocha": "^10.2.0",
     "sass": "^1.63.4",
     "sass-loader": "^13.3.2"
   },
@@ -45,5 +52,18 @@
     "hooks": {
       "pre-commit": "node .huskyrc.js"
     }
-  }
+  },
+  "description": "## Project setup ``` npm install ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArshiaSaleem98/VueProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArshiaSaleem98/VueProject/issues"
+  },
+  "homepage": "https://github.com/ArshiaSaleem98/VueProject#readme"
 }

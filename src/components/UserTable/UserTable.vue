@@ -16,17 +16,14 @@
         <!-- Table body -->
         <tbody>
           <!-- Display existing users -->
-          <tr
-            v-for="user in users"
-            :key="user.id"
-          >
+          <tr v-for="user in users" :key="user.id">
             <td>{{ user.id }}</td>
             <td>
               <input
                 v-if="isUserEditing && selectedUser.id === user.id"
                 v-model="selectedUser.name"
                 type="text"
-              >
+              />
               <span v-else>{{ user.name }}</span>
             </td>
             <td>
@@ -34,7 +31,7 @@
                 v-if="isUserEditing && selectedUser.id === user.id"
                 v-model="selectedUser.cc"
                 type="text"
-              >
+              />
               <span v-else>{{ user.cc }}</span>
             </td>
             <td>{{ user['modified-by'] }}</td>
@@ -48,17 +45,10 @@
                 >
                   Edit
                 </button>
-                <button
-                  v-else
-                  class="btn btn-success"
-                  @click="saveUserChanges"
-                >
+                <button v-else class="btn btn-success" @click="saveUserChanges">
                   Save
                 </button>
-                <button
-                  class="btn btn-danger"
-                  @click="deleteUser(user.id)"
-                >
+                <button class="btn btn-danger" @click="deleteUser(user.id)">
                   Delete
                 </button>
               </div>
@@ -78,7 +68,6 @@
     />
   </div>
 </template>
-
 <script>
 import GetAllUserService from '@/services/GetAllUserService';
 import UserModal from '@/components/Modal/CreateUserModal.vue';
@@ -120,16 +109,22 @@ export default {
   },
   methods: {
     fetchUsers() {
-      GetAllUserService.getUsers()
-        .then((users) => {
-          console.log('users', users);
+      if (typeof Cypress !== 'undefined' && Cypress.env('USE_FIXTURE')) {
+        // Use fixture data for Cypress tests
+        cy.fixture('mock-user-data').then((users) => {
           this.users = users;
-        })
-        .catch((error) => {
-          console.error('Error fetching users:', error);
         });
+      } else {
+        GetAllUserService.getUsers()
+          .then((users) => {
+            console.log('users', users);
+            this.users = users;
+          })
+          .catch((error) => {
+            console.error('Error fetching users:', error);
+          });
+      }
     },
-
     editUser,
     saveUserChanges,
     deleteUser,
@@ -138,7 +133,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import './user-table.scss';
 </style>

@@ -2,8 +2,16 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    mocha: true,
+    'cypress/globals': true, // Include Cypress global variables
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended'],
+
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:mocha/recommended',
+    'plugin:cypress/recommended', // Include Cypress recommended rules
+  ],
   parserOptions: {
     parser: 'babel-eslint',
   },
