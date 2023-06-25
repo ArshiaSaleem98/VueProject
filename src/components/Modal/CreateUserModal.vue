@@ -5,19 +5,27 @@
       tabindex="-1"
       role="dialog"
       style="display: block"
+      aria-modal="true"
     >
       <div class="new-user-modal__dialog new-user-modal__dialog-right">
         <div class="new-user-modal__content">
           <div class="modal-header">
-            <h5 class="modal-title">
+            <h5
+              id="modal-title"
+              class="modal-title"
+            >
               {{ title }}
             </h5>
             <button
               type="button"
               class="close"
+              aria-label="Close"
               @click="closeModal"
             >
-              <span aria-hidden="true">&times;</span>
+              <i
+                class="fas fa-times"
+                aria-hidden="true"
+              />
             </button>
           </div>
           <div class="modal-body">
@@ -31,6 +39,8 @@
                   class="form-control"
                   placeholder="Name"
                   required
+                  aria-required="true"
+                  autocomplete="off"
                 >
               </div>
               <div class="form-group">
@@ -40,8 +50,13 @@
                   v-model="newUser.cc"
                   class="form-control"
                   required
+                  aria-required="true"
                 >
-                  <option value="">
+                  <option
+                    value=""
+                    disabled
+                    selected
+                  >
                     Select Country
                   </option>
                   <option value="SP">
@@ -74,19 +89,21 @@
                 >
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  @click="closeModal"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                >
-                  Add
-                </button>
+                <div class="btn-wrapper">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    @click="closeModal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary add-user-button"
+                  >
+                    Add
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -95,6 +112,8 @@
     </div>
   </div>
 </template>
+
+<!-- Rest of the code remains the same -->
 
 <script>
 import AddNewUserService from '@/services/AddNewUserService';
@@ -123,7 +142,6 @@ export default {
       try {
         this.newUser.id = Date.now().toString();
 
-        // Validate mandatory fields
         if (!this.newUser.name || !this.newUser.cc) {
           alert('Please fill in all mandatory fields.');
           return;

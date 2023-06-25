@@ -4,7 +4,6 @@ import axios from 'axios';
 
 export default {
   deleteUser(userId) {
-    console.log('edit user', userId);
     const timestamp = new Date().getTime();
 
     let apiUrl;

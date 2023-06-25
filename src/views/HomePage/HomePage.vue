@@ -6,6 +6,8 @@
     <div class="add-new-user-section">
       <button
         class="btn btn-primary add-new-user-button"
+        role="button"
+        aria-label="Add User"
         @click="addNewUser"
       >
         Add User

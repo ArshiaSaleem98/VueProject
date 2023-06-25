@@ -33,7 +33,7 @@ Cypress.Commands.add('editUser', () => {
   const newName = 'John Doe';
   Cypress.env('userIdToEdit', userIdToEdit);
 
-  cy.get(`button[data-id="${userIdToEdit}"][class="btn btn-primary"]`)
+  cy.get(`button[data-id="${userIdToEdit}"][class="btn edit-button"]`)
     .first()
     .should('exist')
     .click();
@@ -41,7 +41,7 @@ Cypress.Commands.add('editUser', () => {
   cy.get(`input[data-id="${userIdToEdit}-name"]`).clear();
   cy.get(`input[data-id="${userIdToEdit}-name"]`).type(newName);
 
-  cy.get(`button[data-id="${userIdToEdit}"][class="btn btn-success"]`)
+  cy.get(`button[data-id="${userIdToEdit}"][class="btn save-button"]`)
     .first()
     .should('exist')
     .click();
@@ -61,7 +61,7 @@ Cypress.Commands.add('deleteUser', () => {
 
   Cypress.env('userDeleteId', userIdToDelete);
 
-  cy.get(`button[data-id="${userIdToDelete}"][class="btn btn-danger"]`)
+  cy.get(`button[data-id="${userIdToDelete}"][class="btn delete-button"]`)
     .should('exist')
     .click();
 

@@ -3,9 +3,10 @@
     <div class="all-user-table__responsive">
       <table class="table">
         <!-- Table header -->
+
         <thead>
           <tr>
-            <th>ID</th>
+            <th>USER ID</th>
             <th>Name</th>
             <th>Country</th>
             <th>Modified By</th>
@@ -16,68 +17,87 @@
         <!-- Table body -->
         <tbody>
           <!-- Display existing users -->
-          <tr v-for="user in users" :key="user.id" :data-key="user.id">
-            <td>{{ user.id }}</td>
-            <td>
+          <tr
+            v-for="user in users"
+            :key="user.id"
+            :data-key="user.id"
+          >
+            <td data-label="User Id">
+              <span :data-id="`${user.id}-id`">{{ user.id }}</span>
+            </td>
+            <td data-label="Name">
               <input
                 v-if="user.isEditing"
                 v-model="user.name"
                 :data-id="`${user.id}-name`"
                 type="text"
-              />
+              >
               <span v-else>{{ user.name }}</span>
             </td>
-            <td>
+            <td data-label="Country">
               <select
                 v-if="user.isEditing"
                 v-model="user.cc"
                 :data-id="`${user.id}-cc`"
               >
-                <option value="SP">SP</option>
-                <option value="IT">IT</option>
+                <option value="SP">
+                  SP
+                </option>
+                <option value="IT">
+                  IT
+                </option>
               </select>
               <span v-else>{{ user.cc }}</span>
             </td>
-            <td>
+            <td data-label="Modified By">
               <input
                 v-if="user.isEditing"
                 v-model="user['modified-by']"
                 type="text"
-              />
+              >
               <span v-else>{{ user['modified-by'] }}</span>
             </td>
-            <td>
+            <td data-label="Updated Timestamp">
               <input
                 v-if="user.isEditing"
                 v-model="user['updated-ts']"
                 type="text"
-              />
+              >
               <span v-else>{{ user['updated-ts'] }}</span>
             </td>
-            <td>
+            <td data-label="Action">
               <div class="action-buttons">
                 <button
                   v-if="!user.isEditing"
-                  class="btn btn-primary"
+                  class="btn edit-button"
                   :data-id="`${user.id}`"
+                  aria-label="Edit The User"
                   @click="editSelectedUser(user)"
                 >
-                  Edit
+                  <div class="icon-wrapper">
+                    <i class="fas fa-edit" />
+                  </div>
                 </button>
                 <button
                   v-else
-                  class="btn btn-success"
+                  class="btn save-button"
                   :data-id="`${user.id}`"
+                  aria-label="Save Edited Changes"
                   @click="saveEditedUserChanges(user)"
                 >
-                  Save
+                  <div class="icon-wrapper">
+                    <i class="fas fa-save" />
+                  </div>
                 </button>
                 <button
-                  class="btn btn-danger"
+                  class="btn delete-button"
                   :data-id="`${user.id}`"
+                  aria-label="Delete The User"
                   @click="deleteUser(user.id)"
                 >
-                  Delete
+                  <div class="icon-wrapper">
+                    <i class="fas fa-trash" />
+                  </div>
                 </button>
               </div>
             </td>
