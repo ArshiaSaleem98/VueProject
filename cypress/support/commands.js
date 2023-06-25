@@ -1,52 +1,71 @@
 import HomePage from '../../src/views/HomePage/HomePage';
 import './commands';
 
-Cypress.Commands.add('setupFixture', () => {
-  cy.fixture('mock-user-data.json').as('usersData');
+Cypress.Commands.add('getUsers', () => {
   cy.viewport(2000, 2000);
-  Cypress.env('USE_FIXTURE', true);
-
-  cy.intercept('GET', 'http://localhost:8080/webdev/api/users', {
-    fixture: 'mock-user-data.json',
-  }).as('getUsers');
-});
-
-Cypress.Commands.add('showTable', () => {
-  cy.fixture('mock-user-data.json').as('usersData');
-
+  Cypress.env('isTesting', true);
   cy.mount(HomePage);
-
-  // Access the fixture data using the alias
-  cy.get('@usersData').then((users) => {
-    cy.get('.all-user-table')
-      .find('.all-user-table__responsive')
-      .should('exist');
-
-    cy.get('.all-user-table')
-      .find('tbody > tr')
-      .should('have.length', users.length);
-  });
+  cy.get('.all-user-table').find('.all-user-table__responsive').should('exist');
 });
 
 Cypress.Commands.add('createUser', () => {
-  cy.fixture('mock-user-data.json').then((users) => {
-    const newUser = {
-      id: 57,
-      name: 'Mark',
-      cc: 'SP',
-      'modified-by': '',
-      'updated-ts': '',
-    };
+  Cypress.env('isTesting', true);
 
-    cy.mount(HomePage);
+  const newUser = {
+    id: 57,
+    name: 'Mark',
+    cc: 'SP',
+    'modified-by': '',
+    'updated-ts': '',
+  };
 
-    cy.get('.btn.btn-primary.add-new-user-button')
-      .first()
-      .click({ force: true });
-    cy.get('#name').type(newUser.name);
-    cy.get('#cc').select(newUser.cc);
-    cy.get('.btn.btn-primary[type="submit"]').click();
-    users.push(newUser);
-    cy.writeFile('cypress/fixtures/mock-user-data.json', users);
-  });
+  cy.mount(HomePage);
+
+  cy.get('.btn.btn-primary.add-new-user-button').first().click({ force: true });
+  cy.get('#name').type(newUser.name);
+  cy.get('#cc').select(newUser.cc);
+  cy.get('.btn.btn-primary[type="submit"]').click();
+});
+
+Cypress.Commands.add('editUser', () => {
+  cy.mount(HomePage);
+  const userIdToEdit = 150;
+  const newName = 'John Doe';
+  Cypress.env('userIdToEdit', userIdToEdit);
+
+  cy.get(`button[data-id="${userIdToEdit}"][class="btn btn-primary"]`)
+    .first()
+    .should('exist')
+    .click();
+
+  cy.get(`input[data-id="${userIdToEdit}-name"]`).clear();
+  cy.get(`input[data-id="${userIdToEdit}-name"]`).type(newName);
+
+  cy.get(`button[data-id="${userIdToEdit}"][class="btn btn-success"]`)
+    .first()
+    .should('exist')
+    .click();
+
+  cy.get('.all-user-table__responsive .table tbody')
+    .find(`tr[data-key="${userIdToEdit}"]`)
+    .within(() => {
+      cy.get(`input[data-id="${userIdToEdit}-name"]`)
+        .should('be.visible')
+        .should('have.value', newName);
+    });
+});
+
+Cypress.Commands.add('deleteUser', () => {
+  cy.mount(HomePage);
+  const userIdToDelete = 149;
+
+  Cypress.env('userDeleteId', userIdToDelete);
+
+  cy.get(`button[data-id="${userIdToDelete}"][class="btn btn-danger"]`)
+    .should('exist')
+    .click();
+
+  cy.get('.all-user-table__responsive .table tbody')
+    .find(`tr[data-key="${userIdToDelete}"]`)
+    .should('not.exist');
 });

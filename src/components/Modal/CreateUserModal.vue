@@ -47,8 +47,8 @@
                   <option value="SP">
                     SP
                   </option>
-                  <option value="TP">
-                    TP
+                  <option value="IT">
+                    IT
                   </option>
                 </select>
               </div>

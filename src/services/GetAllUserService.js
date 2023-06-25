@@ -1,10 +1,17 @@
-import BASE_API_URL from '@/config';
+import { BASE_API_URL } from '@/config';
+import { TEST_BASE_API_URL } from '@/config';
 import axios from 'axios';
 
 export default {
   getUsers() {
     const timestamp = new Date().getTime();
-    const apiUrl = `${BASE_API_URL}?timestamp=${timestamp}`;
+
+    let apiUrl;
+    if (typeof Cypress !== 'undefined' && Cypress.env('isTesting')) {
+      apiUrl = `${TEST_BASE_API_URL}?timestamp=${timestamp}`; // Assuming '/data' is the endpoint for mock-user-data.json in JSON Server
+    } else {
+      apiUrl = `${BASE_API_URL}?timestamp=${timestamp}`;
+    }
 
     return axios
       .get(apiUrl)

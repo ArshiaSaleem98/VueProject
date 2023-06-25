@@ -3,11 +3,11 @@ describe('HomePage', function () {
     cy.getUsers();
   });
 
-  it('creates a new user', function () {
-    cy.createUser();
+  it('delete user', function () {
+    cy.deleteUser();
   });
 
-  it('displays users table after adding', function () {
+  it('shows all users after deleting', function () {
     cy.getUsers();
   });
 });

@@ -1,44 +1,18 @@
-[
-  {
-    "id": 149,
-    "cc": "IT",
-    "name": "test2",
-    "modified-by": "",
-    "updated-ts": 1687422093
-  },
-  {
-    "id": 150,
-    "cc": "SP",
-    "name": "test4",
-    "modified-by": "",
-    "updated-ts": 1687421516
-  },
-  {
-    "id": 57,
-    "name": "John Doe",
-    "cc": "SP",
-    "modified-by": "",
-    "updated-ts": ""
-  },
-  {
-    "id": 57,
-    "name": "John Doe",
-    "cc": "SP",
-    "modified-by": "",
-    "updated-ts": ""
-  },
-  {
-    "id": 57,
-    "name": "John Doe",
-    "cc": "SP",
-    "modified-by": "",
-    "updated-ts": ""
-  },
-  {
-    "id": 57,
-    "name": "John Doe",
-    "cc": "SP",
-    "modified-by": "",
-    "updated-ts": ""
-  }
-]
+{
+  "data": [
+    {
+      "id": 150,
+      "name": "John Doe",
+      "cc": "IT",
+      "modified-by": "admin",
+      "updated-ts": 1687422093
+    },
+    {
+      "id": 149,
+      "name": "Massimo",
+      "cc": "IT",
+      "modified-by": "admin",
+      "updated-ts": 1687422093
+    }
+  ]
+}

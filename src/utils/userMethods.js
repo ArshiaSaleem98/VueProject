@@ -5,16 +5,26 @@ import axios from 'axios';
 export function editUser(userId) {
   console.log('Edit User:', userId);
   this.selectedUser = this.users.find((user) => user.id === userId);
-  this.isUserEditing = true;
+  this.selectedUser.isEditing = true;
 }
 
 export function saveUserChanges() {
-  const { id, name, cc, 'modified-by': modifiedBy } = this.selectedUser;
-
-  const requestBody = {
+  const {
+    id,
     name,
     cc,
     'modified-by': modifiedBy,
+    'updated-ts': updatedTs,
+  } = this.selectedUser;
+  this.selectedUser.isEditing = false;
+  delete this.selectedUser.isEditing;
+
+  const requestBody = {
+    id,
+    name,
+    cc,
+    'modified-by': modifiedBy,
+    'updated-ts': updatedTs,
   };
 
   EditUserService.editUser(id, requestBody)

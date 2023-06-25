@@ -16,39 +16,67 @@
         <!-- Table body -->
         <tbody>
           <!-- Display existing users -->
-          <tr v-for="user in users" :key="user.id">
+          <tr v-for="user in users" :key="user.id" :data-key="user.id">
             <td>{{ user.id }}</td>
             <td>
               <input
-                v-if="isUserEditing && selectedUser.id === user.id"
-                v-model="selectedUser.name"
+                v-if="user.isEditing"
+                v-model="user.name"
+                :data-id="`${user.id}-name`"
                 type="text"
               />
               <span v-else>{{ user.name }}</span>
             </td>
             <td>
-              <input
-                v-if="isUserEditing && selectedUser.id === user.id"
-                v-model="selectedUser.cc"
-                type="text"
-              />
+              <select
+                v-if="user.isEditing"
+                v-model="user.cc"
+                :data-id="`${user.id}-cc`"
+              >
+                <option value="SP">SP</option>
+                <option value="IT">IT</option>
+              </select>
               <span v-else>{{ user.cc }}</span>
             </td>
-            <td>{{ user['modified-by'] }}</td>
-            <td>{{ user['updated-ts'] }}</td>
+            <td>
+              <input
+                v-if="user.isEditing"
+                v-model="user['modified-by']"
+                type="text"
+              />
+              <span v-else>{{ user['modified-by'] }}</span>
+            </td>
+            <td>
+              <input
+                v-if="user.isEditing"
+                v-model="user['updated-ts']"
+                type="text"
+              />
+              <span v-else>{{ user['updated-ts'] }}</span>
+            </td>
             <td>
               <div class="action-buttons">
                 <button
-                  v-if="!isUserEditing"
+                  v-if="!user.isEditing"
                   class="btn btn-primary"
-                  @click="editUser(user.id)"
+                  :data-id="`${user.id}`"
+                  @click="editSelectedUser(user)"
                 >
                   Edit
                 </button>
-                <button v-else class="btn btn-success" @click="saveUserChanges">
+                <button
+                  v-else
+                  class="btn btn-success"
+                  :data-id="`${user.id}`"
+                  @click="saveEditedUserChanges(user)"
+                >
                   Save
                 </button>
-                <button class="btn btn-danger" @click="deleteUser(user.id)">
+                <button
+                  class="btn btn-danger"
+                  :data-id="`${user.id}`"
+                  @click="deleteUser(user.id)"
+                >
                   Delete
                 </button>
               </div>
@@ -68,6 +96,7 @@
     />
   </div>
 </template>
+
 <script>
 import GetAllUserService from '@/services/GetAllUserService';
 import UserModal from '@/components/Modal/CreateUserModal.vue';
@@ -94,8 +123,6 @@ export default {
         'modified-by': '',
         'updated-ts': '',
       },
-      selectedUser: null,
-      isUserEditing: false,
     };
   },
   watch: {
@@ -109,30 +136,29 @@ export default {
   },
   methods: {
     fetchUsers() {
-      if (typeof Cypress !== 'undefined' && Cypress.env('USE_FIXTURE')) {
-        // Use fixture data for Cypress tests
-        cy.fixture('mock-user-data').then((users) => {
-          this.users = users;
+      GetAllUserService.getUsers()
+        .then((users) => {
+          console.log('users', users);
+          // Set the initial isEditing state for each user
+          this.users = users.map((user) => ({ ...user, isEditing: false }));
+        })
+        .catch((error) => {
+          console.error('Error fetching users:', error);
         });
-      } else {
-        GetAllUserService.getUsers()
-          .then((users) => {
-            console.log('users', users);
-            this.users = users;
-          })
-          .catch((error) => {
-            console.error('Error fetching users:', error);
-          });
-      }
     },
-    editUser,
-    saveUserChanges,
+    editSelectedUser(user) {
+      editUser.call(this, user.id);
+    },
+    saveEditedUserChanges(user) {
+      saveUserChanges.call(this, user.id);
+    },
     deleteUser,
     addUser,
     closeModal,
   },
 };
 </script>
+
 <style lang="scss" scoped>
 @import './user-table.scss';
 </style>

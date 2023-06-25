@@ -1,9 +1,5 @@
 describe('HomePage Component', function () {
-  beforeEach(function () {
-    cy.setupFixture();
-  });
-
-  it('Shows user table with fixture data', function () {
-    cy.showTable();
+  it('Shows all users table with users data', function () {
+    cy.getUsers();
   });
 });
