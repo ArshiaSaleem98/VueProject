@@ -145,3 +145,11 @@ Explore using different styling frameworks and tools to enhance the visual appea
 
 In addition to using styling frameworks, considering incorporating styled components into the application will be also useful. As Styled components allow having component-specific styles using a CSS-in-JS approach, making it easier to manage and customize the styling of individual components.
 
+## Thank You for Reading!
+
+Thank you for taking the time to explore the project. I hope you found the information useful and gained insights into its features and functionality. If you have any questions or feedback, please don't hesitate to reach out.
+
+I appreciate your interest and support!
+
+Best regards,
+
