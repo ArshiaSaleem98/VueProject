@@ -9,7 +9,6 @@ For each operations, following methods/Endpoints are available:
 - `POST /users/`: Creates a new user.
 - `PUT /users/{id}`: Updates a user.
 - `DELETE /users/{id}`: Deletes a user.
-- `GET /countries`: Returns information related to user details.
 
 
 ## Table of Contents
