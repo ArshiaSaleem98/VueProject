@@ -11,17 +11,13 @@
             <th>Country</th>
             <th>Modified By</th>
             <th>Updated Timestamp</th>
-            <th>Action</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <!-- Table body -->
         <tbody>
           <!-- Display existing users -->
-          <tr
-            v-for="user in users"
-            :key="user.id"
-            :data-key="user.id"
-          >
+          <tr v-for="user in users" :key="user.id" :data-key="user.id">
             <td data-label="User Id">
               <span :data-id="`${user.id}-id`">{{ user.id }}</span>
             </td>
@@ -31,7 +27,7 @@
                 v-model="user.name"
                 :data-id="`${user.id}-name`"
                 type="text"
-              >
+              />
               <span v-else>{{ user.name }}</span>
             </td>
             <td data-label="Country">
@@ -40,12 +36,8 @@
                 v-model="user.cc"
                 :data-id="`${user.id}-cc`"
               >
-                <option value="SP">
-                  SP
-                </option>
-                <option value="IT">
-                  IT
-                </option>
+                <option value="SP">SP</option>
+                <option value="IT">IT</option>
               </select>
               <span v-else>{{ user.cc }}</span>
             </td>
@@ -54,7 +46,7 @@
                 v-if="user.isEditing"
                 v-model="user['modified-by']"
                 type="text"
-              >
+              />
               <span v-else>{{ user['modified-by'] }}</span>
             </td>
             <td data-label="Updated Timestamp">
@@ -62,10 +54,10 @@
                 v-if="user.isEditing"
                 v-model="user['updated-ts']"
                 type="text"
-              >
+              />
               <span v-else>{{ user['updated-ts'] }}</span>
             </td>
-            <td data-label="Action">
+            <td data-label="Actions">
               <div class="action-buttons">
                 <button
                   v-if="!user.isEditing"
