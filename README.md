@@ -33,7 +33,7 @@ Install all the needed dependencies by using the command: `npm install`
 
 To Run the Vue application use the command: `npm run serve`
 
-Access the application in your browser at `http://localhost:8080` or if you want to serve the app to another port then you can use the following command: `npm run serve -- --port {port you want}`
+Access the application in your browser at `http://localhost:8080` or if you want to serve the app to another port then you can use the following command: `npm run serve --port {port you want}`
 
 ### Running Tests
 
