@@ -84,9 +84,9 @@ The following tools, libraries, and frameworks are being used in the development
 
 ## App Layout and Design
 
-<img width="500" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/ca297a97-3f53-4bbe-9791-0d78723c6968">
+<img width="500" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/7031ffb6-580c-433e-b88d-a6ee0dad9987">
 
-<img width="500" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/6ac941c6-b11a-4629-b094-8d318cd6a797">
+<img width="500" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/1335bc41-e7b7-4458-aa16-a38aefa90257">
 
 The application has a simple and intuitive layout that allows users to view and manage user data effectively. Here is an overview of the app's layout and design:
 
@@ -94,10 +94,10 @@ The application has a simple and intuitive layout that allows users to view and 
   
 - `User Table`: The user data is displayed in a table format on the Home Page, providing a structured view of the user information. Each row represents a user, and the columns represent different user attributes.
   
-- `Edit and Delete Buttons`: For each user in the table, there are two buttons available: "Edit" <img width="20" alt="Screenshot 2023-06-26 at 01 40 10" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/47ec078c-5cab-4ca4-b5a9-c9429cee8dec"> and "Delete" <img width="20" alt="Screenshot 2023-06-26 at 01 41 06" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/0f58ce58-3cb1-4c87-8400-742a68d9789a">. Clicking the "Edit" <img width="20" alt="Screenshot 2023-06-26 at 01 40 10" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/47ec078c-5cab-4ca4-b5a9-c9429cee8dec"> button enables the user to modify the corresponding user's fields within the table. Once the necessary edits are made, the user can save the changes by clicking the "Save" 
- <img width="20" alt="Screenshot 2023-06-26 at 01 41 15" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/d28cd8d8-075c-4270-af9e-cdc5609f1a18"> button.
+- `Edit and Delete Buttons`: For each user in the table, there are two buttons available: "Edit" <img width="30" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/d796ede0-fff4-4e69-b8fc-cafeb035cef3"> and "Delete" <img width="30" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/babe0336-1fd7-4bc7-a2fa-dc7a66d98c99">. Clicking the "Edit" <img width="30" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/d796ede0-fff4-4e69-b8fc-cafeb035cef3">
+ button enables the user to modify the corresponding user's fields within the table. Once the necessary edits are made, the user can save the changes by clicking the "Save" <img width="30" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/8da69b25-59f8-48a2-87e2-7af25843c7c5"> button.
 
-- `Adding a User`: To add a new user, there is a button located above the user table <img width="60" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/2e0df64f-32a4-4d34-9ba0-7cc967e14f57">. When the user clicks on this button, a side modal or form opens up, providing a convenient space to create a new user. The form includes fields to enter relevant user details. After filling in the required information, the user can add a new user by pressing the "Add" button. The newly added user will immediately appear in the user table.
+- `Adding a User`: To add a new user, there is a button located above the user table <img width="50" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/b6b43f12-0afa-4753-a399-4c6825464ed5">. When the user clicks on this button, a side modal or form opens up, providing a convenient space to create a new user. The form includes fields to enter relevant user details. After filling in the required information, the user can add a new user by pressing the "Add" button. The newly added user will immediately appear in the user table.
 
 The app's layout and design prioritize simplicity, making it user-friendly and easily accessible. Users can interact with the table, edit user information, delete users, and add new users effortlessly.
 
@@ -119,7 +119,7 @@ In desktop and tablet mode, the application represents user data in a table form
 
 - `Mobile Mode:`
 
-<img width="250" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/fcbc6a38-7e76-4d48-93f4-6e802131994d">
+<img width="350" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/dedd8a10-5ef0-4904-b6a0-5e7d38dc9ba2">
   
 In mobile mode, the application adopts a more compact and user-friendly design by utilizing a card-based layout. Each user is represented as a card, displaying key information in a concise and visually appealing manner. This mobile-friendly design ensures easy navigation and readability on smaller screens.
 
