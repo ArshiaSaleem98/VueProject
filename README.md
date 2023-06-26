@@ -42,7 +42,7 @@ To run the test using Cypress, follow these steps:
 1. Make sure you have installed previously all the needed dependencies by using the command: `npm install`
 2. Open the new terminal
 3. Navigate to the project root directory
-4. Run the following command to open the Cypress test runner: `npm run test` (This command will launch the Cypress test runner and also run the `json-server` on `http://localhost:8080`).
+4. Run the following command to open the Cypress test runner: `npm run test` (This command will launch the Cypress test runner and also run the `json-server` on `http://localhost:3000`).
 5. The Cypress test runner window will open, allowing you to view and run the tests.
 
 
