@@ -113,7 +113,6 @@
   </div>
 </template>
 
-<!-- Rest of the code remains the same -->
 
 <script>
 import AddNewUserService from '@/services/AddNewUserService';
