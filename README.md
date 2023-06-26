@@ -17,7 +17,6 @@ For each operations, following methods/Endpoints are available:
 - [Tools and Libraries](#tools-and-libraries)
 - [Project Structure](#project-structure)
 - [App Layout and Design](#app-layout-and-design)
-- [Additional Features](#additional-features)
 - [Future Improvements and Enhancements](#future-improvements-and-enhancements)
 
 ## Installation
