@@ -17,11 +17,9 @@ For each operations, following methods/Endpoints are available:
 - [Usage](#usage)
 - [Tools and Libraries](#tools-and-libraries)
 - [Project Structure](#project-structure)
-- [Testing](#testing)
-- [Accessibility](#accessibility)
+- [App Layout and Design](#app-layout-and-design)
 - [Additional Features](#additional-features)
-- [Future Improvements](#future-improvements)
-- [Learnings](#learnings)
+- [Future Improvements and Enhancements](#future-improvements-and-enhancements)
 
 ## Installation
 
@@ -93,9 +91,12 @@ The following tools, libraries, and frameworks are being used in the development
 The application has a simple and intuitive layout that allows users to view and manage user data effectively. Here is an overview of the app's layout and design:
 
 - `Home Page`: The homepage is the main interface for the application. It is designed with a clean and easy-to-understand layout.
+  
 - `User Table`: The user data is displayed in a table format on the Home Page, providing a structured view of the user information. Each row represents a user, and the columns represent different user attributes.
+  
 - `Edit and Delete Buttons`: For each user in the table, there are two buttons available: "Edit" <img width="20" alt="Screenshot 2023-06-26 at 01 40 10" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/47ec078c-5cab-4ca4-b5a9-c9429cee8dec"> and "Delete" <img width="20" alt="Screenshot 2023-06-26 at 01 41 06" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/0f58ce58-3cb1-4c87-8400-742a68d9789a">. Clicking the "Edit" <img width="20" alt="Screenshot 2023-06-26 at 01 40 10" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/47ec078c-5cab-4ca4-b5a9-c9429cee8dec"> button enables the user to modify the corresponding user's fields within the table. Once the necessary edits are made, the user can save the changes by clicking the "Save" 
  <img width="20" alt="Screenshot 2023-06-26 at 01 41 15" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/d28cd8d8-075c-4270-af9e-cdc5609f1a18"> button.
+
 - `Adding a User`: To add a new user, there is a button located above the user table <img width="60" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/2e0df64f-32a4-4d34-9ba0-7cc967e14f57">. When the user clicks on this button, a side modal or form opens up, providing a convenient space to create a new user. The form includes fields to enter relevant user details. After filling in the required information, the user can add a new user by pressing the "Add" button. The newly added user will immediately appear in the user table.
 
 The app's layout and design prioritize simplicity, making it user-friendly and easily accessible. Users can interact with the table, edit user information, delete users, and add new users effortlessly.
@@ -112,10 +113,14 @@ By implementing form validation, the application ensures that the user data rema
 
 The application is a responsive-based layout that adapts to different screen sizes, ensuring optimal user experience across desktop, tablet, and mobile devices. Here is an overview of the app's layout and design:
 
-Desktop and Tablet Mode:
+- `Desktop and Tablet Mode:`
+  
 In desktop and tablet mode, the application represents user data in a table format, allowing users to view and manage user information efficiently. The layout is designed to maximize screen space and present a comprehensive overview of user attributes.
 
-Mobile Mode:
+- `Mobile Mode:`
+
+<img width="250" alt="image" src="https://github.com/ArshiaSaleem98/VueProject/assets/45390300/fcbc6a38-7e76-4d48-93f4-6e802131994d">
+  
 In mobile mode, the application adopts a more compact and user-friendly design by utilizing a card-based layout. Each user is represented as a card, displaying key information in a concise and visually appealing manner. This mobile-friendly design ensures easy navigation and readability on smaller screens.
 
 ## Future Improvements and Enhancements
